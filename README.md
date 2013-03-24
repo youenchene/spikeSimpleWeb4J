@@ -1,4 +1,4 @@
-spikeSimpleWeb4J
+Spike SimpleWeb4J
 ================
 
 Spike based on  :
