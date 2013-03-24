@@ -1,5 +1,6 @@
 package ychene.spike.service;
 
+import com.github.jmkgreen.morphia.Datastore;
 import com.github.jmkgreen.morphia.Morphia;
 import com.mongodb.Mongo;
 import com.mongodb.MongoURI;
@@ -24,8 +25,10 @@ public class Service1 {
     {
         Mongo m = null;
         try {
-            m = new Mongo(new MongoURI("mongodb://localhost:27017/"));
-            mongoDao=new MongoDao(new Morphia(),m);
+            //m = new Mongo(new MongoURI("mongodb://localhost:27017/));"
+            m = new Mongo(new MongoURI("mongodb://flame.mongohq.com:27098"));
+            Datastore db=new Morphia().createDatastore(m,"LgtSCMeIplQ4hdEK2dcQ","cloudbees", "testcloud".toCharArray());
+            mongoDao=new MongoDao(db);
         } catch (UnknownHostException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

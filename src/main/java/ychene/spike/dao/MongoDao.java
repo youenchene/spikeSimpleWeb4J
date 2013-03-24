@@ -23,8 +23,8 @@ import java.util.List;
  */
 public class MongoDao extends BasicDAO<Object1, ObjectId> {
 
-    public MongoDao( Morphia morphia, Mongo mongo ) throws UnknownHostException {
+    public MongoDao( Datastore ds ) throws UnknownHostException {
 
-        super(mongo,morphia, "spikesw4j");
+        super(ds);
     }
 }

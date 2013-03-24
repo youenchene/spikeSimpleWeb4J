@@ -89,7 +89,7 @@ public class SpikeSimpleWeb4JController {
         }
 
         // Default port;
-        return 9999;
+        return 80;
     }
 
     public static void main(String[] args) {

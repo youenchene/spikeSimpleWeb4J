@@ -1,1 +1,1 @@
-web:    java -cp target/classes:target/dependency/* ychene.spike.test.SpikeSimpleWeb4JController
+web:    java -cp target/classes:target/dependency/* ychene.spike.SpikeSimpleWeb4JController

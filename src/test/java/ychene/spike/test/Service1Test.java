@@ -24,7 +24,11 @@ public class Service1Test {
     @Before
     public void setup() {
         service1=new Service1();
+        try
+        {
         service1.mongoDao.getCollection().drop();
+        }
+        catch (Exception e) {}
     }
 
     @Test
