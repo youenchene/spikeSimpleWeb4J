@@ -5,7 +5,7 @@ Spike based on  :
  - angular.js
  - Twitter Bootstrap
  - SimpleWeb 4J (Yan Bonnel young light web framework).
- - Morphia (lightweight OIRM for Mongo)
+ - Morphia (lightweight ORM for Mongo)
 
 Demo 
 ====
