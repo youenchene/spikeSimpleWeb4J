@@ -4,13 +4,20 @@ import fr.ybonnel.simpleweb4j.exception.HttpErrorException;
 import fr.ybonnel.simpleweb4j.handlers.Response;
 import fr.ybonnel.simpleweb4j.handlers.Route;
 import fr.ybonnel.simpleweb4j.handlers.RouteParameters;
+import ychene.spike.model.Object1;
+import ychene.spike.service.Service1;
+
+import java.util.List;
 
 import static fr.ybonnel.simpleweb4j.SimpleWeb4j.*;
 
 /**
  * Main class.
  */
-public class SpikeSimpleWeb4J {
+public class SpikeSimpleWeb4JController {
+
+
+    private static Service1 service1=new Service1();
 
     /**
      * Object return by route.
@@ -35,6 +42,23 @@ public class SpikeSimpleWeb4J {
             @Override
             public Response<Hello> handle(Void param, RouteParameters routeParams) throws HttpErrorException {
                 return new Response<>(new Hello());
+            }
+        });
+
+        // Declare the route "/object1" for GET method whith no param in request payload.
+        get(new Route<Void, List<Object1>>("/object1", Void.class) {
+            @Override
+            public Response<List<Object1>> handle(Void param, RouteParameters routeParams) throws HttpErrorException {
+                return new Response<>(service1.getAllObject1());
+            }
+        });
+
+
+        post(new Route<Object1, Object1>("/object1/", Object1.class) {
+            @Override
+            public Response<Object1> handle(Object1 param, RouteParameters routeParams) throws HttpErrorException {
+                service1.insertObject1(param);
+                return new Response<>(param);
             }
         });
 

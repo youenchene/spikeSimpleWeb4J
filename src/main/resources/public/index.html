@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en"  ng-app="spikeSimpleWeb4J">
     <head>
         <meta charset="utf-8">
         <title>Spike Simple Web 4J</title>
@@ -13,7 +13,7 @@
             }
         </style>
     </head>
-    <body ng-app="spikeSimpleWeb4J">
+    <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -25,8 +25,10 @@
         <!-- angular will insert the template in container -->
         <div class="container" ng-view>
         </div>
+
         <!-- Placed javascripts at the end of the document so the pages load faster -->
         <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/SpikeSimpleWeb4J.js"></script>

@@ -3,5 +3,33 @@
     <div class="span6 well">
         <!-- the value of hello is getted from scope -->
         <h3>{{hello}}</h3>
+     </div>
+    <div class="span3"></div>
+    <div class="span6">
+        <h2>Object 1</h2>
+        <form novalidate class="form-inline">
+            Field 1: <input type="text" ng-model="newObject1.field1" />
+            Field 2: <input type="text" ng-model="newObject1.field2" />
+            Field 3: <input type="text" ng-model="newObject1.field3" />
+            <button class="btn btn-success" ng-click="insertNewObject1(newObject1)">Add</button>
+        </form>
+        <table class="table  table-striped">
+            <tr>
+                <th>Field 1</th>
+                <th>Field 2</th>
+                <th>Field 3</th>
+            </tr>
+            <tr ng-repeat="object1 in object1s|filter:query|orderBy:sortorder">
+                <!--
+                  use ngClassEven (http://docs.angularjs.org/api/ng.directive:ngClassEven)
+                  to apply a class to even rows so we can make our table stripey
+                -->
+                <td ng-class-even="'even'">{{object1.field1}}</td>
+                <td ng-class-even="'even'">{{object1.field2}}</td>
+                <td ng-class-even="'even'">{{object1.field3}}</td>
+
+            </tr>
+        </table>
     </div>
+    <div class="span2"></div>
 </div>

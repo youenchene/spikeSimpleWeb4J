@@ -1,15 +1,10 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-
-
 SCRIPT_PATH=`dirname $0`
-PROJECT_PATH=${symbol_dollar}{SCRIPT_PATH}/..
+PROJECT_PATH=${SCRIPT_PATH}/..
 
 BEES_APP_ID=$1
 MAIN_CLASS=${package}.${className}
 
-if [ "x${symbol_dollar}{BEES_APP_ID}" = "x" ]
+if [ "x${BEES_APP_ID}" = "x" ]
 then
     echo "Use : deploybees <APP_ID>"
     exit 1
@@ -17,23 +12,23 @@ fi
 
 ARTIFACT_ID=${artifactId}
 
-CLASSPATH_FILE=/tmp/${symbol_dollar}{ARTIFACT_ID}$$
+CLASSPATH_FILE=/tmp/${ARTIFACT_ID}$$
 
-unzip -Z -1 ${symbol_dollar}{PROJECT_PATH}/target/${symbol_dollar}{ARTIFACT_ID}-cloudbees.zip | grep jar | while read dependency
+unzip -Z -1 ${PROJECT_PATH}/target/${ARTIFACT_ID}-cloudbees.zip | grep jar | while read dependency
 do
-    if [ ! -f ${symbol_dollar}{CLASSPATH_FILE} ]
+    if [ ! -f ${CLASSPATH_FILE} ]
     then
-        printf "${symbol_dollar}{dependency}" > ${symbol_dollar}CLASSPATH_FILE
+        printf "${dependency}" > $CLASSPATH_FILE
     else
-        printf ":${symbol_dollar}{dependency}" >> ${symbol_dollar}CLASSPATH_FILE
+        printf ":${dependency}" >> $CLASSPATH_FILE
     fi
 done
 
-BEES_CLASSPATH=`cat ${symbol_dollar}CLASSPATH_FILE`
+BEES_CLASSPATH=`cat $CLASSPATH_FILE`
 
-rm ${symbol_dollar}CLASSPATH_FILE
+rm $CLASSPATH_FILE
 
 
-bees app:deploy -a ${symbol_dollar}{BEES_APP_ID} -t java -R java_version=1.7 -R class=${symbol_dollar}{MAIN_CLASS} -R classpath=${symbol_dollar}{BEES_CLASSPATH} ${symbol_dollar}{PROJECT_PATH}/target/${symbol_dollar}{ARTIFACT_ID}-cloudbees.zip
+bees app:deploy -a ${BEES_APP_ID} -t java -R java_version=1.7 -R class=${MAIN_CLASS} -R classpath=${BEES_CLASSPATH} ${PROJECT_PATH}/target/${ARTIFACT_ID}-cloudbees.zip
 
 exit 0
